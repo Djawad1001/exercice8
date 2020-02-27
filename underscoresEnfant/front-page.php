@@ -77,6 +77,8 @@ get_header();
      $query2->the_post();
      echo '<li>' . get_the_title( $query2->post->ID ) . '</li>';
      echo get_the_post_thumbnail(null, "thumbnail");
+     echo '<p>'.get_the_excerpt(). '</p>';
+
  }
  
  // Restore original Post Data
