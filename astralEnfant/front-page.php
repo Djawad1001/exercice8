@@ -29,7 +29,37 @@ get_header();
 
 		endwhile; // End of the loop.
 		
- 
+        $args3 = array (
+     
+            "category_name" => "conference",
+            "posts_per_page" => 8,
+            "orderby" => "date",
+            "order" =>"ASC"
+            
+        
+            
+        );
+        $query3 = new WP_Query($args3);
+        
+        $category = get_the_category($query3->post->ID);
+        
+        
+        echo "<h1>".category_description($category[0])."</h1>";
+        // The 2nd Loop
+        while ( $query3->have_posts() ) {
+            $query3->the_post();
+            echo '<div class="divConference" style="background-color:white"; padding:1%;">';
+        
+            echo '<h4>'.get_the_title(). ' - '  . get_the_date() . '</h4>';
+            //echo '<h4>' . get_the_date() . '</h4>';
+            echo get_the_post_thumbnail(null,"thumbnail");
+            echo the_excerpt();
+            echo '</div>';
+            
+        }
+        
+        // Restore original Post Data
+        wp_reset_postdata();
  // The Query
 
  $args = array(
@@ -42,7 +72,8 @@ get_header();
   
  // The Loop
  while ( $query1->have_posts() ) {
-     $query1->the_post();
+    echo '<br>'; 
+    $query1->the_post();
      echo '<h3>' . get_the_title() . '</h3>';
      echo '<p>'.get_the_excerpt(). '</p>';
  }
@@ -87,34 +118,7 @@ get_header();
 //EXERCICE 
 
 
-$args3 = array (
-     
-    "category_name" => "conference",
-    
 
-    
-);
-$query3 = new WP_Query($args3);
-
-$category = get_the_category($query3->post->ID);
-
-
-echo "<h1>".category_description($category[0])."</h1>";
-// The 2nd Loop
-while ( $query3->have_posts() ) {
-    $query3->the_post();
-    echo '<div class="divConference" style="background-color:white"; padding:1%;">';
-
-    echo '<h4>'.get_the_title(). ' - '  . get_the_date() . '</h4>';
-    //echo '<h4>' . get_the_date() . '</h4>';
-    echo get_the_post_thumbnail(null, "thumbnail");
-    echo the_excerpt();
-    echo '</div>';
-    
-}
-
-// Restore original Post Data
-wp_reset_postdata();
  ?>
 		</main><!-- #main -->
 	</div><!-- #primary -->

@@ -18,7 +18,9 @@ img {
 h3 {
   color: blue;
 }
-
+.divConference{
+  margin-top: 50px;
+}
 .divConference h4 {
   position: absolute;
   left: 14%;
