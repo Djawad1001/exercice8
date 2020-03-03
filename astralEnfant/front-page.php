@@ -15,10 +15,10 @@
 
 get_header();
 ?>
-
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 		<?php
+        
 		while ( have_posts() ) :
 			the_post();
 
@@ -57,6 +57,7 @@ get_header();
   
   
  /* The 2nd Query (without global var) */
+ /*
  $args2 = array (
      
      "category_name" => "evenement",
@@ -80,7 +81,37 @@ get_header();
  
  // Restore original Post Data
  wp_reset_postdata();
-  
+ */ 
+
+////////////////////////////////////////////////////////////
+//EXERCICE 
+
+
+$args3 = array (
+     
+    "category_name" => "conference",
+    "posts_per_game" => 4,
+    "orderby" => "date",
+    "order" => "ASC"
+    
+    
+    
+    
+);
+$query3 = new WP_Query($args3);
+
+
+//echo "<h1>".category_description($catID[0])."</h1>";
+// The 2nd Loop
+while ( $query3->have_posts() ) {
+    $query3->the_post();
+    echo '<h2>'.get_the_title().'</h2>';
+    echo '<li>' . get_the_date() . '</li>';
+    echo get_the_post_thumbnail(null, "thumbnail");
+}
+
+// Restore original Post Data
+wp_reset_postdata();
  ?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
