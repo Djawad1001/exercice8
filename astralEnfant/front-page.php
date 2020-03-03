@@ -90,24 +90,27 @@ get_header();
 $args3 = array (
      
     "category_name" => "conference",
-    "posts_per_game" => 4,
-    "orderby" => "date",
-    "order" => "ASC"
     
-    
-    
+
     
 );
 $query3 = new WP_Query($args3);
 
+$category = get_the_category($query3->post->ID);
 
-//echo "<h1>".category_description($catID[0])."</h1>";
+
+echo "<h1>".category_description($category[0])."</h1>";
 // The 2nd Loop
 while ( $query3->have_posts() ) {
     $query3->the_post();
-    echo '<h2>'.get_the_title().'</h2>';
-    echo '<li>' . get_the_date() . '</li>';
+    echo '<div class="divConference" style="background-color:white"; padding:1%;">';
+
+    echo '<h4>'.get_the_title(). ' - '  . get_the_date() . '</h4>';
+    //echo '<h4>' . get_the_date() . '</h4>';
     echo get_the_post_thumbnail(null, "thumbnail");
+    echo the_excerpt();
+    echo '</div>';
+    
 }
 
 // Restore original Post Data

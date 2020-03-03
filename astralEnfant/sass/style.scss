@@ -11,29 +11,5 @@
  Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
  Text Domain:  astralchild
 */
-img {
-  background-color: red;
-}
 
-h3 {
-  color: blue;
-}
-
-.divConference h4 {
-  position: absolute;
-  left: 14%;
-}
-
-.divConference p {
-  display: inline-block;
-  margin-left: 2%;
-  width: 35%;
-  height: 100px;
-  padding-top: 3%;
-}
-
-.divConference img {
-  float: left;
-  clear: both;
-}
-/*# sourceMappingURL=style.css.map */
+@import "_conference.scss";
